@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teacher Guide: Zero Waste Food Loop</title><link rel="stylesheet" href="style.css">
+<style>table{width:100%;border-collapse:collapse;font-size:.85rem}td,th{border-top:1px solid var(--line);padding:5px;text-align:left;vertical-align:top}@media print{header,footer button{display:none}}</style></head>
+<body><header><a class="brand" href="./">♻️ Zero Waste Food Loop</a><span>Teacher guide</span></header>
+<main>
+<div class="card"><h2>Learning goals (grades 5 and 6)</h2><ul>
+<li>Explain why wasted food is a resource problem, not just a trash problem.</li>
+<li>Rank uses of surplus food using the Food Rescue Ladder: use it up, share it, feed animals, make something, compost, trash.</li>
+<li>Describe a food loop, where one step's leftovers become the next step's inputs.</li>
+<li>Explain why safety checks (such as testing peanuts for mold toxin) are part of closing a loop.</li></ul>
+<p><b>Time:</b> about 5 minutes per level, 20 minutes for all four.</p></div>
+<div class="card"><h2>Discussion questions</h2><ol>
+<li>Why is it better to take less food than to compost more food?</li>
+<li>Which items could not be shared, and why?</li>
+<li>Why did you have to throw away some peanuts even though they looked fine?</li>
+<li>What loops can you find in your school, home or community?</li></ol></div>
+<div class="card"><h2>Content review checklist</h2><ul>
+<li>Confirm each "why" and "Did you know?" statement against a source and add it to your lesson notes.</li>
+<li>Check local rules for home compost, school share tables and what animals can safely eat.</li>
+<li>Check that examples fit your students' region and food culture.</li></ul></div>
+<div class="card"><h2>Answer key</h2><div id="key"></div></div>
+</main>
+<footer>No student data is collected. Progress is saved only on each device.</footer>
+<script src="data.js"></script>
+<script>
+const G=window.GAME,key=document.getElementById("key");
+key.innerHTML=G.levels.filter(l=>l.type==="sort").map(l=>{
+ const bn=b=>({...G.bins[b],...((l.binLabels||{})[b]||{})});
+ const rows=l.items.map(it=>{const best=Object.entries(it.scores).sort((a,b)=>b[1]-a[1])[0][0];
+  return `<tr><td>${it.emoji} ${it.name}${it.extra?" <small>(appears with some choices)</small>":""}</td><td>${bn(best).name}</td><td>${it.why[best]}</td></tr>`}).join("");
+ return `<h3>${l.title}</h3><table><tr><th>Item</th><th>Best bin</th><th>Why</th></tr>${rows}</table>`}).join("");
+</script></body></html>
